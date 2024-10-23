@@ -1,29 +1,35 @@
-import React from "react";
+import { useState } from "react";
+
+
 
 const Content = () => {
-  const names = ["Chaltu", "Abebe", "Kebede"];
-  const ran = Math.floor(Math.random() * 3);
-  const name = names[ran];
+  const [name, setName] = useState('Doni');
 
+  const handleNameChange = () => {
+    const names = ["Chaltu", "Abebe", "Kebede"];
+    const ran = Math.floor(Math.random() * 3);
+    setName(names[ran]);
+  }
   function handleClick(e) {
-    if (e.target.innerText === "Click") {
+ 
       e.target.innerText = "Done!";
-    } else {
-      e.target.innerText = "Click";
-    }
+    
+
     // let text = e;
     // console.log(text);
     // text.target.innerText = "Abebe";
   }
+  const handleClick2 = (name) => {
+    console.log(`${name} was clicked`)
+  }
+  const handleClick3 = (e) => {
+    console.log(e.target.innerText)
+  }
   return (
     <main>
-      <button
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        Click
-      </button>
+      <button onClick={handleNameChange}>Change Name</button>
+      <button onClick={() => handleClick2('Doni')}>click2</button>
+      <button onClick={(e) => handleClick3(e)}>click3</button>
       <p>Hello {name}</p>
     </main>
   );
