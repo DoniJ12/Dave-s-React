@@ -1,36 +1,41 @@
 import { useState } from "react";
-
-
+import { FaTrashAlt } from "react-icons/fa";
 
 const Content = () => {
-  const [name, setName] = useState('Doni');
+  const [plan, setPlan] = useState([
+    {
+      id: 1,
+      done: false,
+      plan: "Tuto",
+    },
+    {
+      id: 2,
+      done: false,
+      plan: "Project",
+    },
+    {
+      id: 3,
+      done: false,
+      plan: "Game",
+    },
+    {
+      id: 4,
+      done: false,
+      plan: "Report",
+    },
+  ]);
 
-  const handleNameChange = () => {
-    const names = ["Chaltu", "Abebe", "Kebede"];
-    const ran = Math.floor(Math.random() * 3);
-    setName(names[ran]);
-  }
-  function handleClick(e) {
- 
-      e.target.innerText = "Done!";
-    
-
-    // let text = e;
-    // console.log(text);
-    // text.target.innerText = "Abebe";
-  }
-  const handleClick2 = (name) => {
-    console.log(`${name} was clicked`)
-  }
-  const handleClick3 = (e) => {
-    console.log(e.target.innerText)
-  }
   return (
     <main>
-      <button onClick={handleNameChange}>Change Name</button>
-      <button onClick={() => handleClick2('Doni')}>click2</button>
-      <button onClick={(e) => handleClick3(e)}>click3</button>
-      <p>Hello {name}</p>
+      <ul>
+        {plan.map((plan) => (
+          <li className="plan" key={plan.id}>
+            <input type="checkbox" checked={plan.done} />
+            <label>{plan.plan}</label>
+            <FaTrashAlt role="button" tabIndex="0" />
+          </li>
+        ))}
+      </ul>
     </main>
   );
 };
