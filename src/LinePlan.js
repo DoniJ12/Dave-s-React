@@ -6,7 +6,7 @@ const LinePlan = ({ plan, handleCheck, handleDelete }) => {
       <input
         onChange={() => handleCheck(plan.id)}
         type="checkbox"
-        checked={plan.done}
+        checked={plan.done}     
       />
       <label
         style={plan.done ? { textDecoration: "line-through" } : null}
